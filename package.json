@@ -20,12 +20,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/culture-app.git"
+    "url": "https://github.com/OpenSource-HR/culture-app-HR-open-source.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/culture-app/issues"
+    "url": "https://github.com/OpenSource-HR/culture-app-HR-open-source/issues"
   },
-  "homepage": "https://github.com/yourusername/culture-app#readme",
+  "homepage": "https://github.com/OpenSource-HR/culture-app-HR-open-source#readme",
   "scripts": {
     "start": "node main.js",
     "dev": "nodemon main.js",
