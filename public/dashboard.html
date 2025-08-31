@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Culture App</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-content">
+        <div class="container">
+            <h1 class="dashboard-greeting">Hello, <span id="dashboardName">...</span>! 👋</h1>
+            
+            <div class="dashboard-grid">
+                <!-- Upcoming Birthdays Card -->
+                <div class="dashboard-card birthdays-card">
+                    <h2 class="card-title">
+                        <i class="fas fa-birthday-cake"></i>
+                        Upcoming Birthdays
+                    </h2>
+                    <div id="birthdaysList" class="birthdays-list two-columns">
+                        <div class="loading">Loading birthdays...</div>
+                    </div>
+                </div>
+
+                 <!-- Updated Survey Statistics Card -->
+                 <div class="dashboard-card">
+                    <h2 class="card-title">
+                        <i class="fas fa-chart-bar"></i>
+                        Survey Completion%
+                        <span id="surveyQuarter" class="quarter-badge"></span>
+                    </h2>
+                    <div id="surveyStats" class="survey-stats">
+                        <div class="loading">Loading survey statistics...</div>
+                    </div>
+                </div>
+
+                <!-- Team Goals Card -->
+                <div class="dashboard-card team-goals-card">
+                    <h2 class="card-title">
+                        <i class="fas fa-bullseye"></i>
+                        Team Goals
+                        <span id="teamGoalsQuarter" class="quarter-badge"></span>
+                    </h2>
+                    <div id="teamGoals" class="team-goals">
+                        <div class="loading">Loading team goals...</div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- AI Summary Card
+            <div class="dashboard-card ai-summary-card">
+                <h2 class="card-title">
+                    <i class="fas fa-robot"></i>
+                    AI Engagement Summary
+                </h2>
+                <div id="aiSummary" class="ai-summary-content">
+                    <div class="loading">Loading summary...</div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+
+    <script src="navbar.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

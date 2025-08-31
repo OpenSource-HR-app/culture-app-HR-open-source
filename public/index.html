@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Culture App - Login</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="login-container">
+            <img id="loginLogo" src="images/black-logo-horizontal.png" alt="Logo" class="login-logo">
+            <h1 id="welcomeTitle">Welcome to Culture App</h1>
+            
+            <div class="login-tabs">
+                <button class="tab-btn active" data-tab="login">Login</button>
+                <button class="tab-btn" data-tab="signup">Sign Up</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <div class="input-group">
+                        <input type="email" id="loginEmail" required placeholder="">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <div class="input-group">
+                        <input type="password" id="loginPassword" required placeholder="Enter your password">
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+                <button type="button" class="secondary-btn" id="forgotPasswordBtn">
+                    <i class="fas fa-key"></i> Forgot Password?
+                </button>
+            </form>
+
+            <!-- Signup Form -->
+            <form id="signupForm" class="auth-form" style="display: none;">
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <div class="input-group">
+                        <input type="email" id="signupEmail" required placeholder="">
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Get OTP
+                </button>
+            </form>
+
+            <!-- OTP Verification Form -->
+            <form id="otpForm" class="auth-form" style="display: none;">
+                <div class="form-group">
+                    <label for="otp">Enter OTP</label>
+                    <div class="input-group">
+                        <input type="text" id="otp" required placeholder="Enter 6-digit OTP">
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-check"></i> Verify OTP
+                </button>
+            </form>
+
+            <!-- Set Password Form -->
+            <form id="setPasswordForm" class="auth-form" style="display: none;">
+                <div class="form-group">
+                    <label for="newPassword">New Password</label>
+                    <div class="input-group">
+                        <input type="password" id="newPassword" required placeholder="Minimum 6 characters">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <div class="input-group">
+                        <input type="password" id="confirmPassword" required placeholder="Confirm your password">
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-save"></i> Set Password
+                </button>
+            </form>
+
+            <!-- Reset Password OTP Form -->
+            <form id="resetPasswordOtpForm" class="auth-form" style="display: none;">
+                <h2>Enter OTP</h2>
+                <p>Please enter the OTP sent to your email</p>
+                <div class="form-group">
+                    <label for="resetOtp">OTP</label>
+                    <div class="input-group">
+                        <i class="fas fa-key input-icon"></i>
+                        <input type="text" id="resetOtp" required placeholder="Enter 6-digit OTP">
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-check"></i> Verify OTP
+                </button>
+            </form>
+
+            <!-- New Password Form -->
+            <form id="newPasswordForm" class="auth-form" style="display: none;">
+                <h2>Set New Password</h2>
+                <div class="form-group">
+                    <label for="resetNewPassword">New Password</label>
+                    <div class="input-group">
+                        <i class="fas fa-lock input-icon"></i>
+                        <input type="password" id="resetNewPassword" required placeholder="Minimum 6 characters">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="resetConfirmPassword">Confirm Password</label>
+                    <div class="input-group">
+                        <i class="fas fa-lock input-icon"></i>
+                        <input type="password" id="resetConfirmPassword" required placeholder="Confirm your password">
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-save"></i> Reset Password
+                </button>
+            </form>
+
+            <div class="admin-link">
+                <a href="/admin/login.html">
+                    <i class="fas fa-user-shield"></i> Admin Portal
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html> 

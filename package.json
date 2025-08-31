@@ -1,0 +1,55 @@
+{
+  "name": "culture-app",
+  "version": "1.0.0",
+  "description": "Employee Culture and Survey Application",
+  "main": "main.js",
+  "type": "module",
+  "keywords": [
+    "culture",
+    "employee",
+    "survey",
+    "feedback",
+    "workplace",
+    "team-goals",
+    "courses",
+    "nodejs",
+    "express",
+    "mongodb"
+  ],
+  "author": "Culture App Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/culture-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/culture-app/issues"
+  },
+  "homepage": "https://github.com/yourusername/culture-app#readme",
+  "scripts": {
+    "start": "node main.js",
+    "dev": "nodemon main.js",
+    "setup": "node setup.js",
+    "init-db": "node init-db.js",
+    "test": "node test-runner.js",
+    "test:watch": "node test-runner.js",
+    "build": "echo 'Build completed - Node.js app ready to run'"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "mongoose": "^8.0.0",
+    "multer": "^2.0.2",
+    "nodemailer": "^6.9.7",
+    "openai": "^4.0.0",
+    "pdfkit": "^0.16.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

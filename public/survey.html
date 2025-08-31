@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey - Culture App</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-content">
+        <div class="container">
+            <a href="/surveys.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Surveys
+            </a>
+            <div id="surveyContainer" class="survey-container">
+                <h1 id="surveyTitle">Loading survey...</h1>
+                <p id="surveyDescription"></p>
+                
+                <form id="surveyForm" class="survey-form">
+                    <div id="questionContainer">
+                        <!-- Questions will be loaded dynamically -->
+                    </div>
+                    
+                    <div class="form-actions">
+                        <p class="mandatory-text">
+                            <i class="fas fa-info-circle"></i> All fields are mandatory
+                        </p>
+                        <button type="submit" class="submit-btn">Submit Survey</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="navbar.js"></script>
+    <script src="survey.js"></script>
+</body>
+</html> 

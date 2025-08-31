@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Culture App</title>
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="apple-touch-icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <nav class="admin-nav">
+            <div class="nav-left">
+                <div class="nav-logo">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Admin View</span>
+                </div>
+            </div>
+            <div class="nav-links">
+                <button class="nav-btn" onclick="showSection('culture')">
+                    <i class="fas fa-heart"></i>
+                    Culture Score
+                </button>
+                <button class="nav-btn" onclick="showSection('employees')">
+                    <i class="fas fa-users"></i>
+                    Employees
+                </button>
+                <button class="nav-btn" onclick="showSection('responses')">
+                    <i class="fas fa-clipboard-list"></i>
+                    Survey Responses
+                </button>
+                <button class="nav-btn" onclick="showSection('goals')">
+                    <i class="fas fa-bullseye"></i>
+                    Goals
+                </button>
+                <button class="nav-btn" onclick="showSection('courses')">
+                    <i class="fas fa-graduation-cap"></i>
+                    Courses
+                </button>
+                <button class="nav-btn" onclick="window.location.href='settings.html'">
+                    <i class="fas fa-cog"></i>
+                    Settings
+                </button>
+            </div>
+            <button class="logout-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </button>
+        </nav>
+
+        <main class="admin-content">
+            <section id="employees-section" class="admin-section active">
+                <div class="section-header">
+                    <div class="header-left">
+                        <h2>Employees</h2>
+                        <span class="employee-count"></span>
+                    </div>
+                </div>
+                <div class="employees-table-container">
+                    <table class="employees-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Team</th>
+                                <th>Surveys Completed</th>
+                                <th>Last Updated</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="employeesTableBody">
+                            <!-- Employees will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="responses-section" class="admin-section">
+                <div class="section-header">
+                    <div class="header-left">
+                        <h2>Survey Responses</h2>
+                        <span class="response-count"></span>
+                    </div>
+                    <div class="header-right">
+                        <button onclick="showCreateSurveyForm()" class="btn-primary">
+                            <i class="fas fa-plus"></i>
+                            Create New Survey
+                        </button>
+                    </div>
+                </div>
+                <div id="responsesList" class="responses-list">
+                    <!-- Responses will be loaded here -->
+                </div>
+            </section>
+
+            <section id="goals-section" class="admin-section">
+                <div class="section-header">
+                    <div class="header-left">
+                        <h2>Team Goals</h2>
+                        <span class="goals-count"></span>
+                    </div>
+                    <button class="btn-primary" onclick="showCreateGoalForm()">
+                        <i class="fas fa-plus"></i>
+                        Create New Goal
+                    </button>
+                </div>
+                <div id="goalsList" class="goals-grid">
+                    <!-- Goals will be loaded here -->
+                </div>
+            </section>
+
+            <section id="courses-section" class="admin-section">
+                <div class="section-header">
+                    <div class="header-left">
+                        <h2>Learning Resources</h2>
+                        <span class="courses-count"></span>
+                    </div>
+                    <button class="btn-primary" onclick="showCreateCourseForm()">
+                        <i class="fas fa-plus"></i>
+                        Create New Course
+                    </button>
+                </div>
+                <div id="coursesList" class="courses-grid">
+                    <!-- Courses will be loaded here -->
+                </div>
+            </section>
+
+            <section id="culture-section" class="admin-section">
+                <div class="section-header">
+                    <div class="header-left">
+                        <h2>Culture Score</h2>
+                        <span class="last-updated"></span>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn-primary culture-refresh-btn" onclick="refreshCultureScore()">
+                            <i class="fas fa-sync-alt"></i>
+                            Refresh Analysis
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="culture-grid">
+                    <div class="culture-card company-overview">
+                        <div class="card-header">
+                            <h3>Company Overview</h3>
+                        </div>
+                        <div class="metrics-grid">
+                            <div class="metric">
+                                <span class="metric-value" id="totalEmployees">-</span>
+                                <span class="metric-label">Total Employees</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value" id="avgSatisfaction">-</span>
+                                <span class="metric-label">Avg. Satisfaction</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value" id="avgWorkLife">-</span>
+                                <span class="metric-label">Avg. Work-Life Balance</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="culture-card team-metrics">
+                        <div class="card-header">
+                            <h3>Team Metrics</h3>
+                        </div>
+                        <div id="teamMetricsGrid" class="team-metrics-grid">
+                            <!-- Team metrics will be loaded here -->
+                        </div>
+                    </div>
+
+                    <div class="culture-card action-items">
+                        <div class="card-header">
+                            <h3>Recommended Actions</h3>
+                        </div>
+                        <div id="actionItemsList" class="action-items-list">
+                            <!-- Action items will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <div id="surveyModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Create New Survey</h3>
+                <button class="close-btn" onclick="closeSurveyModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="surveyForm" onsubmit="handleSurveySubmit(event)">
+                    <div class="form-group">
+                        <label for="surveyTitle">Survey Title*</label>
+                        <input type="text" id="surveyTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="surveyDescription">Description</label>
+                        <textarea id="surveyDescription" rows="3"></textarea>
+                    </div>
+                    <div class="questions-section">
+                        <div class="questions-header">
+                            <h4>Questions</h4>
+                            <button type="button" class="btn-secondary" onclick="addQuestion()">
+                                <i class="fas fa-plus"></i> Add Question
+                            </button>
+                        </div>
+                        <div id="questionsList"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn-secondary" onclick="closeSurveyModal()">Cancel</button>
+                        <button type="submit" class="btn-primary">Save Survey</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="goalModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="goalModalTitle">Create New Goal</h3>
+                <button class="close-btn" onclick="closeGoalModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="goalForm" onsubmit="handleGoalSubmit(event)">
+                    <div class="form-group">
+                        <label for="goalName">Goal Name*</label>
+                        <input type="text" id="goalName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="goalDescription">Description*</label>
+                        <textarea id="goalDescription" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="goalTeam">Team*</label>
+                        <select id="goalTeam" required>
+                            <option value="tech">Tech</option>
+                            <option value="sales">Sales</option>
+                            <option value="product">Product</option>
+                            <option value="marketing">Marketing</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="goalQuarter">Quarter*</label>
+                        <select id="goalQuarter" required>
+                            <!-- Will be populated dynamically -->
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn-secondary" onclick="closeGoalModal()">Cancel</button>
+                        <button type="submit" class="btn-primary">Save Goal</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="courseModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="courseModalTitle">Create New Course</h3>
+                <button class="close-btn" onclick="closeCourseModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="courseForm" onsubmit="handleCourseSubmit(event)">
+                    <div class="form-group">
+                        <label for="courseTitle">Course Title*</label>
+                        <input type="text" id="courseTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="courseDescription">Description*</label>
+                        <textarea id="courseDescription" rows="3" required></textarea>
+                    </div>
+                    <div class="content-section">
+                        <div class="content-header">
+                            <h4>Content Items</h4>
+                            <button type="button" class="btn-secondary" onclick="addContentItem()">
+                                <i class="fas fa-plus"></i> Add Content
+                            </button>
+                        </div>
+                        <div id="contentList"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn-secondary" onclick="closeCourseModal()">Cancel</button>
+                        <button type="submit" class="btn-primary">Save Course</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="editEmployeeModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Employee Profile</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="editEmployeeForm">
+                <div class="form-group">
+                    <label for="editName">Full Name</label>
+                    <input type="text" id="editName" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Gender</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="editGender" value="male" required>
+                            Male
+                        </label>
+                        <label>
+                            <input type="radio" name="editGender" value="female">
+                            Female
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="editTeam">Team</label>
+                    <select id="editTeam" required>
+                        <option value="">Select team</option>
+                        <option value="tech">Tech</option>
+                        <option value="sales">Sales</option>
+                        <option value="product">Product</option>
+                        <option value="marketing">Marketing</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="editDateOfBirth">Date of Birth</label>
+                    <input type="date" id="editDateOfBirth" required>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" onclick="closeEditModal()">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="admin-dashboard.js"></script>
+</body>
+</html> 

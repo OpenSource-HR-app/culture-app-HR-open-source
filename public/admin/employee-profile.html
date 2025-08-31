@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Profile - Admin Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <nav class="admin-nav">
+            <div class="nav-left">
+                <div class="nav-logo">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Admin View</span>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="nav-btn" onclick="goBack(); return false;">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Dashboard
+                </a>
+            </div>
+            <button class="logout-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </button>
+        </nav>
+
+        <main class="admin-content">
+            <div class="profile-container">
+                <div class="profile-header">
+                    <h2>Employee Profile</h2>
+                </div>
+                
+                <div class="profile-content">
+                    <div class="profile-section basic-info">
+                        <h3>Basic Information</h3>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <label>Name</label>
+                                <div id="employeeName"></div>
+                            </div>
+                            <div class="info-item">
+                                <label>Email</label>
+                                <div id="employeeEmail"></div>
+                            </div>
+                            <div class="info-item">
+                                <label>Team</label>
+                                <div id="employeeTeam"></div>
+                            </div>
+                            <div class="info-item">
+                                <label>Gender</label>
+                                <div id="employeeGender"></div>
+                            </div>
+                            <div class="info-item">
+                                <label>Date of Birth</label>
+                                <div id="employeeDOB"></div>
+                            </div>
+                            <div class="info-item">
+                                <label>Last Updated</label>
+                                <div id="employeeLastUpdated"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-section emergency-contact">
+                        <h3>Emergency Contact</h3>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <label>Contact Name</label>
+                                <div id="emergencyContactName"></div>
+                            </div>
+                            <div class="info-item">
+                                <label>Contact Phone</label>
+                                <div id="emergencyContactPhone"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-section survey-stats">
+                        <h3>Survey Statistics</h3>
+                        <div id="surveyStats" class="stats-grid">
+                            <!-- Survey stats will be loaded here -->
+                        </div>
+                    </div>
+
+                    <div class="profile-section recent-responses">
+                        <h3>Recent Survey Responses</h3>
+                        <div id="recentResponses" class="responses-list">
+                            <!-- Recent responses will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="employee-profile.js"></script>
+</body>
+</html> 

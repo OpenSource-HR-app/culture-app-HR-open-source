@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surveys - Culture App</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Add Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-content">
+        <div class="container">
+            <h1 class="page-title">My Surveys</h1>
+            
+            <div id="surveyList" class="survey-list">
+                <!-- Surveys will be loaded here dynamically -->
+                <div class="loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    Loading surveys...
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .survey-card {
+            position: relative; /* Add this to position the completion tag */
+        }
+        
+        .completion-tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #90EE90; /* Light green */
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #006400; /* Darker green for text */
+        }
+    </style>
+
+    <script src="navbar.js"></script>
+    <script src="surveys.js"></script>
+</body>
+</html>

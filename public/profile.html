@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Culture App - Profile</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-content">
+        <div class="container">
+            <a href="/surveys.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Surveys
+            </a>
+            <div class="profile-container">
+                <h1>My Profile</h1>
+                
+                <div class="profile-tabs">
+                    <button class="tab-btn active" data-tab="general">
+                        <i class="fas fa-user"></i> General
+                    </button>
+                    <button class="tab-btn" data-tab="emergency">
+                        <i class="fas fa-phone-alt"></i> Emergency Contact
+                    </button>
+                    <button class="tab-btn" data-tab="password">
+                        <i class="fas fa-lock"></i> Password
+                    </button>
+                </div>
+
+                <div class="tab-content">
+                    <!-- General Tab -->
+                    <div class="tab-pane active" id="general">
+                        <form id="profileForm" class="profile-form">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="gender">Gender</label>
+                                <select id="gender" name="gender" required>
+                                    <option value="">Select gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="team">Team</label>
+                                <select id="team" name="team" required>
+                                    <option value="">Select team</option>
+                                    <option value="tech">Tech</option>
+                                    <option value="sales">Sales</option>
+                                    <option value="product">Product</option>
+                                    <option value="marketing">Marketing</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dateOfBirth">Date of Birth</label>
+                                <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+                            </div>
+                            <small class="help-text">All of the above fields are required and must be filled out.</small>
+
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-save"></i> Save Profile
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Emergency Contact Tab -->
+                    <div class="tab-pane" id="emergency">
+                        <form id="emergencyContactForm" class="emergency-form">
+                            <div class="form-group">
+                                <label for="emergencyName">Emergency Contact Name</label>
+                                <input 
+                                    type="text" 
+                                    id="emergencyName" 
+                                    name="emergencyName" 
+                                    placeholder="Enter emergency contact name"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="emergencyPhone">Emergency Contact Phone</label>
+                                <input 
+                                    type="tel" 
+                                    id="emergencyPhone" 
+                                    name="emergencyPhone" 
+                                    placeholder="Enter emergency contact phone"
+                                    pattern="[0-9]+"
+                                >
+                                <small class="help-text">Enter numbers only, no spaces or special characters</small>
+                            </div>
+
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-save"></i> Save Emergency Contact
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Password Tab -->
+                    <div class="tab-pane" id="password">
+                        <form id="passwordForm" class="password-form">
+                            <div class="form-group">
+                                <label for="currentPassword">Current Password</label>
+                                <input type="password" id="currentPassword" name="currentPassword">
+                                <small class="help-text">(Leave blank if setting password for the first time)</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="newPassword">New Password</label>
+                                <input type="password" id="newPassword" name="newPassword" required>
+                                <small class="help-text">Minimum 6 characters</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm New Password</label>
+                                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                            </div>
+
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-key"></i> Update Password
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="navbar.js"></script>
+    <script src="profile.js"></script>
+</body>
+</html> 

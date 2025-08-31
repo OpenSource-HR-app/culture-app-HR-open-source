@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Settings - Culture App</title>
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-container">
+        <nav class="admin-nav">
+            <div class="nav-left">
+                <div class="nav-logo">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Admin View</span>
+                </div>
+            </div>
+            <div class="nav-links">
+                <button class="nav-btn" onclick="window.location.href='dashboard.html?section=culture'">
+                    <i class="fas fa-heart"></i>
+                    Culture Score
+                </button>
+                <button class="nav-btn" onclick="window.location.href='dashboard.html?section=employees'">
+                    <i class="fas fa-users"></i>
+                    Employees
+                </button>
+                <button class="nav-btn" onclick="window.location.href='dashboard.html?section=responses'">
+                    <i class="fas fa-clipboard-list"></i>
+                    Survey Responses
+                </button>
+                <button class="nav-btn" onclick="window.location.href='dashboard.html?section=goals'">
+                    <i class="fas fa-bullseye"></i>
+                    Goals
+                </button>
+                <button class="nav-btn" onclick="window.location.href='dashboard.html?section=courses'">
+                    <i class="fas fa-graduation-cap"></i>
+                    Courses
+                </button>
+                <button class="nav-btn active" onclick="window.location.href='settings.html'">
+                    <i class="fas fa-cog"></i>
+                    Settings
+                </button>
+            </div>
+            <button class="logout-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </button>
+        </nav>
+
+        <main class="admin-content">
+            <div class="section-header">
+                <div class="header-left">
+                    <h2>Organization Settings</h2>
+                    <p>Configure your organization's branding and preferences</p>
+                </div>
+            </div>
+
+            <div class="settings-container">
+                <!-- Organization Settings -->
+                <div class="settings-section">
+                    <h3>Organization Information</h3>
+                    <form id="orgSettingsForm" class="settings-form">
+                        <div class="form-group">
+                            <label for="organizationName">Organization Name</label>
+                            <input type="text" id="organizationName" name="organizationName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="primaryDomain">Primary Email Domain</label>
+                            <input type="text" id="primaryDomain" name="primaryDomain" placeholder="e.g., company.com" required>
+                            <small>Employees will only be able to sign up with emails from this domain</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Save Organization Settings
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Logo Upload -->
+                <div class="settings-section">
+                    <h3>Organization Logo</h3>
+                    <div class="logo-section">
+                        <div class="current-logo">
+                            <img id="currentLogo" src="../images/black-logo-horizontal.png" alt="Current Logo">
+                            <p>Current Logo</p>
+                        </div>
+                        <div class="logo-upload">
+                            <form id="logoUploadForm" class="upload-form">
+                                <div class="file-upload">
+                                    <input type="file" id="logoFile" name="logo" accept="image/*" required>
+                                    <label for="logoFile" class="file-label">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        Choose Logo File
+                                    </label>
+                                </div>
+                                <small>Recommended: PNG or JPG, max 5MB</small>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-upload"></i> Upload Logo
+                                </button>
+                            </form>
+                            <button onclick="removeLogo()" class="btn btn-secondary">
+                                <i class="fas fa-trash"></i> Remove Logo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- API Credentials -->
+                <div class="settings-section">
+                    <h3>API Credentials</h3>
+                    <form id="apiCredentialsForm" class="settings-form">
+                        <div class="form-group">
+                            <label for="gmailUser">Gmail User</label>
+                            <input type="email" id="gmailUser" name="gmailUser" placeholder="your-email@gmail.com">
+                            <small>Gmail address for sending emails (OTPs, notifications)</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="gmailAppPassword">Gmail App Password</label>
+                            <input type="password" id="gmailAppPassword" name="gmailAppPassword" placeholder="16-character app password">
+                            <small>App password from Google Account settings (not your regular password)</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="openaiApiKey">OpenAI API Key</label>
+                            <input type="password" id="openaiApiKey" name="openaiApiKey" placeholder="sk-...">
+                            <small>API key for AI features (culture score analysis, summaries)</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-key"></i> Save API Credentials
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Feature Toggles -->
+                <div class="settings-section">
+                    <h3>Feature Management</h3>
+                    <form id="featuresForm" class="settings-form">
+                        <div class="feature-toggle">
+                            <label class="toggle-label">
+                                <input type="checkbox" id="surveysEnabled" name="surveys">
+                                <span class="toggle-slider"></span>
+                                Surveys
+                            </label>
+                            <small>Enable employee surveys and feedback collection</small>
+                        </div>
+                        <div class="feature-toggle">
+                            <label class="toggle-label">
+                                <input type="checkbox" id="coursesEnabled" name="courses">
+                                <span class="toggle-slider"></span>
+                                Courses
+                            </label>
+                            <small>Enable learning resources and courses</small>
+                        </div>
+                        <div class="feature-toggle">
+                            <label class="toggle-label">
+                                <input type="checkbox" id="birthdaysEnabled" name="birthdays">
+                                <span class="toggle-slider"></span>
+                                Birthdays
+                            </label>
+                            <small>Show upcoming birthdays on dashboard</small>
+                        </div>
+                        <div class="feature-toggle">
+                            <label class="toggle-label">
+                                <input type="checkbox" id="teamGoalsEnabled" name="teamGoals">
+                                <span class="toggle-slider"></span>
+                                Team Goals
+                            </label>
+                            <small>Enable team goal setting and tracking</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-toggle-on"></i> Save Features
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="admin-dashboard.js"></script>
+    <script src="settings.js"></script>
+</body>
+</html> 
